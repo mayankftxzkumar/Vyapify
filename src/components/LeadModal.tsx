@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Phone, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { X, Phone, ArrowRight, CheckCircle2, User, Briefcase } from 'lucide-react';
 import toast from 'react-hot-toast';
 import './LeadModal.css';
 
@@ -12,7 +12,9 @@ interface LeadModalProps {
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1483590099878019193/EEpxqSCXiGU5HYgrbAl5kbxm9a-am77rxw0gMWv62GmiAUz1yZQpeMmVlfWDkr5YW91c";
 
 const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [business, setBusiness] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -20,8 +22,16 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     
     // Basic validation
+    if (!name.trim()) {
+      toast.error('Please enter your name');
+      return;
+    }
     if (!phone || phone.length < 10) {
       toast.error('Please enter a valid phone number');
+      return;
+    }
+    if (!business.trim()) {
+      toast.error('Please describe your business');
       return;
     }
 
@@ -29,7 +39,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
 
     try {
       const payload = {
-        content: `🚨 **NEW LEAD ALERT** 🚨\n\n**Phone Number:** \`${phone}\`\n**Source:** Vyapify.online "Talk to Sales" Button\n**Time:** <t:${Math.floor(Date.now() / 1000)}:F>`,
+        content: `🚨 **NEW LEAD ALERT** 🚨\n\n**Name:** \`${name}\`\n**Phone Number:** \`${phone}\`\n**Business:** \`${business}\`\n**Source:** Vyapify.online "Talk to Sales" Button\n**Time:** <t:${Math.floor(Date.now() / 1000)}:F>`,
         username: "Vyapify Leads Bot",
         avatar_url: "https://vyapify.online/favicon.ico"
       };
@@ -43,13 +53,15 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
       if(!res.ok) throw new Error("Discord API rejected request");
 
       setIsSuccess(true);
-      toast.success('We received your number!');
+      toast.success('We received your details!');
       
       // Auto close after success
       setTimeout(() => {
         onClose();
         setIsSuccess(false);
+        setName('');
         setPhone('');
+        setBusiness('');
       }, 3000);
 
     } catch (error) {
@@ -96,21 +108,43 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
 
                     <form onSubmit={handleSubmit} className="modal-form">
                       <div className="input-group">
+                        <User className="input-icon" size={20} />
+                        <input 
+                          type="text" 
+                          placeholder="Your Name" 
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          disabled={isSubmitting}
+                          autoFocus
+                        />
+                      </div>
+
+                      <div className="input-group">
                         <Phone className="input-icon" size={20} />
                         <input 
                           type="tel" 
-                          placeholder="Enter your phone number..." 
+                          placeholder="Your Phone Number" 
                           value={phone}
                           onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))} // Numbers only
                           disabled={isSubmitting}
-                          autoFocus
+                        />
+                      </div>
+
+                      <div className="input-group">
+                        <Briefcase className="input-icon" size={20} />
+                        <input 
+                          type="text" 
+                          placeholder="What is your business about?" 
+                          value={business}
+                          onChange={(e) => setBusiness(e.target.value)}
+                          disabled={isSubmitting}
                         />
                       </div>
 
                       <button 
                         type="submit" 
                         className={`btn-primary modal-submit-btn ${isSubmitting ? 'loading' : ''}`}
-                        disabled={isSubmitting || phone.length < 10}
+                        disabled={isSubmitting || phone.length < 10 || !name.trim() || !business.trim()}
                       >
                         {isSubmitting ? (
                           <div className="loader-spinner"></div>
