@@ -1,0 +1,171 @@
+/* --- CSS RESET --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Ultra-Premium Sarvam/Apple Color Palette */
+  --bg-color: #FFFFFF; /* Pure white */
+  --surface-color: #FFFFFF;
+  --text-primary: #1D1D1F; /* Apple dark gray */
+  --text-secondary: #86868B; /* Apple secondary gray */
+  
+  /* Gradients mimicking the user request (slightly greener, less purple) */
+  --gradient-bg: radial-gradient(circle at 15% 50%, rgba(175, 235, 215, 0.4) 0%, rgba(255,255,255,0) 45%),
+                 radial-gradient(circle at 85% 50%, rgba(200, 245, 185, 0.3) 0%, rgba(255,255,255,0) 45%);
+  
+  /* Accent Colors */
+  --accent-purple: #B0A1FF;
+  --accent-blue: #96B4FF;
+  --accent-orange: #FFAB5E;
+  --accent-brand: #3A3A3C;
+  
+  /* Glassmorphism / Cards */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.03);
+  --glass-blur: blur(20px);
+  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.08);
+
+  /* Container & Spacing */
+  --max-width: 1100px;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  
+  /* Typography - Using system fonts for that native Apple feel */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  
+  /* Animation */
+  --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  letter-spacing: -0.01em;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  background-image: var(--gradient-bg);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+/* Base Link Styles */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  position: relative;
+  z-index: 10;
+}
+
+/* Sarvam-like pill buttons */
+.pill-button {
+  padding: 8px 24px;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.pill-light {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.8);
+  color: var(--text-primary);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+}
+
+.pill-light:hover {
+  background: rgba(255,255,255,1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  transform: translateY(-1px);
+}
+
+/* Premium Dark CTA Button (Like Sarvam's 'Experience Sarvam') */
+.btn-primary {
+  background: #1C1C1E;
+  color: #F5F5F7;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  background: #000000;
+}
+
+.btn-secondary {
+  background: #F2F2F7;
+  color: var(--text-primary);
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: #E5E5EA;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}

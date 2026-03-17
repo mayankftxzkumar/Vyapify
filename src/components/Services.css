@@ -1,0 +1,209 @@
+.platform-section {
+  padding: 80px 0;
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.03), inset 0 0 0 1px rgba(255,255,255,0.7);
+  margin-top: 60px;
+  max-width: 1100px;
+}
+
+.platform-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px 32px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 56px;
+}
+
+.platform-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00D364;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 211, 100, 0.4);
+}
+
+/* Expert 3D Card Grid */
+.expert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 0 40px 40px;
+  perspective: 1200px; 
+}
+
+.expert-card-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+  /* Premium Glassmorphic Rectangle */
+  border-radius: 36px;
+  transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  /* REmoved transform-style: preserve-3d to fix Safari vanishing bug */
+}
+
+.expert-card-wrapper:hover {
+  box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+}
+
+/* Background flat color of the card */
+.expert-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0); /* Anchor base layer */
+  /* Pure Glassmorphic Base */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 10px 40px rgba(0,0,0,0.02);
+}
+
+.vfx-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.vfx-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Inner glow that reacts to hovering implicitly via opacity of parent hover */
+.expert-card-glow {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  mix-blend-mode: soft-light;
+  z-index: 5;
+}
+
+.expert-card-wrapper:hover .expert-card-glow {
+  opacity: 1;
+}
+
+/* The actual text/icon content floats above the background */
+.expert-card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  pointer-events: none; /* Let hover events pass through to wrapper */
+  z-index: 10; 
+}
+
+.card-top-icon {
+  width: 64px;
+  height: 64px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* very soft shadow */
+  margin-bottom: auto;
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.card-text-container {
+  margin-bottom: 32px;
+}
+
+.expert-card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.expert-card-desc {
+  font-size: 0.9rem;
+  color: rgba(0,0,0,0.65);
+  line-height: 1.5;
+}
+
+.card-action-btn {
+  pointer-events: auto; /* Enable clicking */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #111;
+  border-radius: 100px;
+  padding: 10px 28px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.4s ease;
+}
+
+.expert-card-wrapper:hover .card-action-btn {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.05); /* Slight scale on wrapper hover */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 900px) {
+  .expert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .expert-grid {
+    grid-template-columns: 1fr;
+    padding: 0 24px 24px;
+  }
+  .platform-header {
+    padding: 0 24px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
