@@ -36,7 +36,7 @@ const Navbar = ({ onOpenModal }: NavbarProps) => {
         </div>
         
         <div className="nav-actions">
-          <button className="btn-primary" onClick={onOpenModal}>Experience Vyapify</button>
+          <button className="btn-primary" onClick={onOpenModal}>Get More Customers</button>
           <button className="btn-secondary hide-mobile" onClick={onOpenModal}>Talk to Sales</button>
         </div>
       </div>

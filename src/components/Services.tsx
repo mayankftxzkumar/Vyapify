@@ -34,27 +34,27 @@ const WaveVFX = () => (
 
 const localServicesData = [
   {
-    title: "AI Ads Campaigns",
-    desc: "Custom AI ads for your local business designed to drive footfall instantly.",
-    actionText: "Launch ads",
+    title: "AI Ads That Convert",
+    desc: "Custom AI ad campaigns designed for gyms, cafes, salons & clinics in Ranchi. Get real footfall, not just clicks. Lead generation for small business — automated.",
+    actionText: "Start growing",
     icon: <Store size={28} strokeWidth={1.5} />,
-    color: "#3B82F6", /* Blue Icon */
+    color: "#3B82F6",
     vfx: <AdsVFX />
   },
   {
-    title: "Landing Pages",
-    desc: "Premium, ultra-fast landing page building to connect and convert local traffic.",
-    actionText: "Build site",
+    title: "High-Converting Websites",
+    desc: "Premium website development in Ranchi — beautiful, ultra-fast landing pages built to turn visitors into paying customers. No templates. No fluff.",
+    actionText: "Build my site",
     icon: <Layout size={28} strokeWidth={1.5} />,
-    color: "#F59E0B", /* Orange/Gold Icon */
+    color: "#F59E0B",
     vfx: <GridVFX />
   },
   {
-    title: "Regional SEO",
-    desc: "Dominate local 'near me' searches at 75% less cost in the market.",
-    actionText: "Rank locally",
+    title: "Local SEO Domination",
+    desc: "Own every 'near me' search in Ranchi. Our AI-driven SEO puts your business on top of Google — at 75% less cost than traditional agencies.",
+    actionText: "Rank #1 locally",
     icon: <MapPin size={28} strokeWidth={1.5} />,
-    color: "#10B981", /* Green Icon */
+    color: "#10B981",
     vfx: <WaveVFX />
   }
 ];
@@ -155,9 +155,9 @@ const Services = () => {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className="platform-title">Hyper-Local Growth Engines</h2>
+        <h2 className="platform-title">Your Growth Engine, Powered by AI</h2>
         <div className="status-indicator">
-          <span className="live-dot"></span> LIVE FOR RANCHI
+          <span className="live-dot"></span> LIVE IN RANCHI
         </div>
       </motion.div>
 

@@ -102,8 +102,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                 {!isSuccess ? (
                   <>
                     <div className="modal-header">
-                      <h2>Let's Scale Your Business</h2>
-                      <p>Drop your phone number below and our AI growth expert will call you shortly.</p>
+                      <h2>Start Growing Today</h2>
+                      <p>Tell us about your business. Our growth expert will reach out within 24 hours — no spam, just results.</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="modal-form">
@@ -150,13 +150,13 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                           <div className="loader-spinner"></div>
                         ) : (
                           <>
-                            Get a Callback <ArrowRight size={18} />
+                            Get a Free Consultation <ArrowRight size={18} />
                           </>
                         )}
                       </button>
                     </form>
                     
-                    <p className="modal-footer-note">We hate spam as much as you do. Pure business growth.</p>
+                    <p className="modal-footer-note">Your data stays private. We only use it to help grow your business.</p>
                   </>
                 ) : (
                   <div className="modal-success-state">
@@ -168,8 +168,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                     >
                       <CheckCircle2 size={48} color="#00D364" />
                     </motion.div>
-                    <h2>We've got it!</h2>
-                    <p>Our team has been notified and will be in touch with you shortly.</p>
+                    <h2>You're all set!</h2>
+                    <p>Our growth team has been notified. Expect a call within 24 hours to discuss your custom growth plan.</p>
                   </div>
                 )}
               </div>

@@ -8,15 +8,15 @@ const Footer = () => {
         <div className="trust-badges-container-light">
           <div className="trust-badge-light">
             <div className="badge-icon-bg"><Zap size={20} /></div>
-            <span>AI-Powered Solutions</span>
+            <span>AI-Powered Growth</span>
           </div>
           <div className="trust-badge-light">
             <div className="badge-icon-bg"><ShieldCheck size={20} /></div>
-            <span>Fast Delivery</span>
+            <span>Results in 30 Days</span>
           </div>
           <div className="trust-badge-light">
             <div className="badge-icon-bg"><HeartHandshake size={20} /></div>
-            <span>24/7 Local Support</span>
+            <span>Dedicated Local Support</span>
           </div>
         </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
             Vyapify<span className="text-gradient">.</span>
           </div>
           <p className="footer-credits-light">
-            © {new Date().getFullYear()} Vyapify Digital Growth Agency. All rights reserved. <br/> Built for Ranchi Businesses.
+            © {new Date().getFullYear()} Vyapify — AI Digital Growth Agency, Ranchi. All rights reserved. <br/> Websites, Ads & SEO for local businesses in Jharkhand.
           </p>
         </div>
       </div>

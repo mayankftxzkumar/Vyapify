@@ -7,8 +7,8 @@ const testimonialsData = [
   {
     id: 1,
     name: "Ranchi Fitness Studio",
-    result: "300% ROI in 2 Months",
-    desc: "From empty treadmills to waitlists using AI-optimized local ads.",
+    result: "300% ROI in 60 Days",
+    desc: "Empty treadmills to waitlists. AI ads for local business drove 3x revenue in just two months.",
     videoUrl: "/videos/ranchi-fitness.mp4",
     videoPosition: "top center"
   },
@@ -16,7 +16,7 @@ const testimonialsData = [
     id: 2,
     name: "Downtown Cafe",
     result: "50+ Daily Walk-ins",
-    desc: "Local SEO and Instagram campaigns transformed their footfall entirely.",
+    desc: "Local SEO and Instagram campaigns turned a quiet cafe into Ranchi's busiest spot.",
     videoUrl: "/videos/downtown-cafe.mp4",
     videoPosition: "center center"
   },
@@ -24,7 +24,7 @@ const testimonialsData = [
     id: 3,
     name: "Local Restaurant",
     result: "Fully Booked Weekends",
-    desc: "Targeted food ads and local SEO generated consistent online reservations.",
+    desc: "Targeted food ads and Google ranking brought consistent online reservations — zero cold calls.",
     videoUrl: "/videos/restaurant.mp4",
     videoPosition: "center center"
   }
@@ -44,32 +44,32 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
-    transition: { 
-      duration: 1.2, 
+    transition: {
+      duration: 1.2,
       ease: [0.16, 1, 0.3, 1] as const
-    } 
+    }
   }
 };
 
 const Testimonials = () => {
   return (
     <section id="results" className="testimonials-section container">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className="section-title">Real Results for <br /><span className="text-gradient font-light">Local Businesses.</span></h2>
-        <p className="section-subtitle">We don't do vanity metrics. We focus strictly on revenue and footfall.</p>
+        <h2 className="section-title">Measurable Results. <br /><span className="text-gradient font-light">Real Ranchi Businesses.</span></h2>
+        <p className="section-subtitle">No vanity metrics. We measure success in revenue, footfall, and booked appointments.</p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="testimonials-grid"
         variants={containerVariants}
         initial="hidden"
@@ -90,11 +90,11 @@ const VideoCard = ({ data }: { data: any }) => {
 
   const handleMouseEnter = () => {
     setIsPlaying(true);
-    if(videoRef.current) {
+    if (videoRef.current) {
       videoRef.current.muted = false;
       videoRef.current.play().catch(_e => {
         // Fallback to muted autoplay if browser blocks unmuted playback
-        if(videoRef.current) {
+        if (videoRef.current) {
           videoRef.current.muted = true;
           videoRef.current.play().catch(e => console.log(e));
         }
@@ -104,25 +104,25 @@ const VideoCard = ({ data }: { data: any }) => {
 
   const handleMouseLeave = () => {
     setIsPlaying(false);
-    if(videoRef.current) {
+    if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.muted = true;
     }
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="video-card-container"
       variants={cardVariants}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="video-wrapper">
-        <video 
+        <video
           ref={videoRef}
-          src={data.videoUrl} 
+          src={data.videoUrl}
           muted={!isPlaying}
-          loop 
+          loop
           playsInline
           className={`testimonial-video ${isPlaying ? 'playing' : ''}`}
           style={{ objectPosition: data.videoPosition }}

@@ -37,10 +37,10 @@ const LocationMap = () => {
         >
           <div className="pill-button pill-light mb-4">
             <span style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-blue)' }}>
-              <MapPin size={16}/> Proudly serving Ranchi businesses
+              <MapPin size={16}/> Digital marketing agency in Ranchi, Jharkhand
             </span>
           </div>
-          <h2 className="section-title">Dominating the <br /> <span className="font-light" style={{color: 'var(--text-secondary)'}}>Local Market</span></h2>
+          <h2 className="section-title">Built for Ranchi. <br /> <span className="font-light" style={{color: 'var(--text-secondary)'}}>Scaled by AI.</span></h2>
         </motion.div>
       </div>
 
@@ -65,8 +65,8 @@ const LocationMap = () => {
           />
           <Marker position={RANCHI_POS} icon={glowingIcon}>
             <Popup className="premium-popup-light">
-              <strong>Vyapify HQ</strong><br />
-              Growing Ranchi Businesses with AI.
+              <strong>Vyapify HQ — Ranchi</strong><br />
+              AI-powered growth for local businesses.
             </Popup>
           </Marker>
         </MapContainer>

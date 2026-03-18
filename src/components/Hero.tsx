@@ -45,7 +45,7 @@ const Hero = ({ onOpenModal }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="badge-text text-gradient">AI platform for local businesses</span>
+          <span className="badge-text text-gradient">#1 AI-powered digital marketing agency in Ranchi</span>
         </motion.div>
 
         <motion.h1 
@@ -64,7 +64,7 @@ const Hero = ({ onOpenModal }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          Build your online presence with Vyapify at half the cost <br className="hide-mobile" /> Grow 10x Ranchi
+          AI-powered websites, ads & SEO for local businesses — <br className="hide-mobile" /> at half the cost. More customers. Zero guesswork.
         </motion.p>
 
         <motion.div 
@@ -74,7 +74,7 @@ const Hero = ({ onOpenModal }: HeroProps) => {
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <button className="btn-primary hero-btn" onClick={onOpenModal}>
-            Experience Vyapify
+            Get More Customers
           </button>
         </motion.div>
 
@@ -84,7 +84,7 @@ const Hero = ({ onOpenModal }: HeroProps) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          <p className="trust-text">RANCHI BUILDS WITH VYAPIFY</p>
+          <p className="trust-text">TRUSTED BY 50+ RANCHI BUSINESSES</p>
         </motion.div>
       </div>
     </section>
