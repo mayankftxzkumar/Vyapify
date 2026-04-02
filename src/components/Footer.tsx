@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="trust-badges-container-light">
           <div className="trust-badge-light">
             <div className="badge-icon-bg"><Smartphone size={20} /></div>
-            <span>100% Free App</span>
+            <span>₹100/mo Subscription</span>
           </div>
           <div className="trust-badge-light">
             <div className="badge-icon-bg"><ShieldCheck size={20} /></div>

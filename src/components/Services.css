@@ -150,7 +150,8 @@
 
 /* Light Sticky Phone Frame */
 .sticky-phone-frame {
-  width: 340px;
+  width: 100%;
+  max-width: 340px;
   height: 680px;
   background: #F5F5F7;
   border-radius: 44px;
