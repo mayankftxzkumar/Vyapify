@@ -11,36 +11,47 @@ const Navbar = ({ onOpenModal }: NavbarProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <motion.nav 
-      className={`navbar ${scrolled ? 'scrolled glass-card' : ''}`}
+    <motion.div 
+      className="navbar-wrapper"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="container nav-container">
-        <div className="nav-logo">
-          <span className="logo-text">vyapify</span>
+      <nav className={`navbar ${scrolled ? 'scrolled floating-island' : ''}`}>
+        <div className="nav-container">
+          <div className="nav-logo">
+            <span className="logo-text">vyapify</span>
+          </div>
+          
+          <div className="nav-links">
+            <a href="#features" className="nav-link">
+              <span className="link-text">FEATURES</span>
+              <div className="link-underline"></div>
+            </a>
+            <a href="#how-it-works" className="nav-link">
+              <span className="link-text">WORKFLOW</span>
+              <div className="link-underline"></div>
+            </a>
+            <a href="#scale" className="nav-link">
+              <span className="link-text">SCALE</span>
+              <div className="link-underline"></div>
+            </a>
+          </div>
+          
+          <div className="nav-actions">
+            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="btn-primary nav-cta">Download App</a>
+            <button className="btn-secondary nav-cta-secondary hide-mobile" onClick={onOpenModal}>Support</button>
+          </div>
         </div>
-        
-        <div className="nav-links">
-          <a href="#services" className="nav-link">SERVICES</a>
-          <a href="#results" className="nav-link">RESULTS</a>
-          <a href="#ranchi" className="nav-link">RANCHI</a>
-        </div>
-        
-        <div className="nav-actions">
-          <button className="btn-primary" onClick={onOpenModal}>Get More Customers</button>
-          <button className="btn-secondary hide-mobile" onClick={onOpenModal}>Talk to Sales</button>
-        </div>
-      </div>
-    </motion.nav>
+      </nav>
+    </motion.div>
   );
 };
 

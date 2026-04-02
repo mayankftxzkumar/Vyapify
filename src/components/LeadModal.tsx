@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Phone, ArrowRight, CheckCircle2, User, Briefcase } from 'lucide-react';
+import { X, Phone, ArrowRight, CheckCircle2, User, MessageCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 import './LeadModal.css';
 
@@ -14,14 +14,13 @@ const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/148359009987801919
 const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [business, setBusiness] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic validation
     if (!name.trim()) {
       toast.error('Please enter your name');
       return;
@@ -30,8 +29,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
       toast.error('Please enter a valid phone number');
       return;
     }
-    if (!business.trim()) {
-      toast.error('Please describe your business');
+    if (!message.trim()) {
+      toast.error('Please describe your issue or question');
       return;
     }
 
@@ -39,8 +38,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
 
     try {
       const payload = {
-        content: `🚨 **NEW LEAD ALERT** 🚨\n\n**Name:** \`${name}\`\n**Phone Number:** \`${phone}\`\n**Business:** \`${business}\`\n**Source:** Vyapify.online "Talk to Sales" Button\n**Time:** <t:${Math.floor(Date.now() / 1000)}:F>`,
-        username: "Vyapify Leads Bot",
+        content: `📩 **NEW SUPPORT REQUEST** 📩\n\n**Name:** \`${name}\`\n**Phone Number:** \`${phone}\`\n**Message:** \`${message}\`\n**Source:** Vyapify.online "Talk to Sales" Button\n**Time:** <t:${Math.floor(Date.now() / 1000)}:F>`,
+        username: "Vyapify Support Bot",
         avatar_url: "https://vyapify.online/favicon.ico"
       };
 
@@ -53,15 +52,14 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
       if(!res.ok) throw new Error("Discord API rejected request");
 
       setIsSuccess(true);
-      toast.success('We received your details!');
+      toast.success('We received your message!');
       
-      // Auto close after success
       setTimeout(() => {
         onClose();
         setIsSuccess(false);
         setName('');
         setPhone('');
-        setBusiness('');
+        setMessage('');
       }, 3000);
 
     } catch (error) {
@@ -75,7 +73,6 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <React.Fragment>
-          {/* Backdrop Blur */}
           <motion.div 
             className="modal-backdrop"
             initial={{ opacity: 0 }}
@@ -84,7 +81,6 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
             onClick={onClose}
           />
           
-          {/* Modal Container */}
           <div className="modal-container">
             <motion.div 
               className="lead-modal"
@@ -92,7 +88,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()} // Prevent clicks inside from closing
+              onClick={(e) => e.stopPropagation()}
             >
               <button className="modal-close-btn" onClick={onClose} disabled={isSubmitting}>
                 <X size={20} />
@@ -102,8 +98,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                 {!isSuccess ? (
                   <>
                     <div className="modal-header">
-                      <h2>Start Growing Today</h2>
-                      <p>Tell us about your business. Our growth expert will reach out within 24 hours — no spam, just results.</p>
+                      <h2>Talk to Us</h2>
+                      <p>Have a question, bug report, or feature request? Our support team will get back to you within 24 hours.</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="modal-form">
@@ -125,18 +121,18 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                           type="tel" 
                           placeholder="Your Phone Number" 
                           value={phone}
-                          onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))} // Numbers only
+                          onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                           disabled={isSubmitting}
                         />
                       </div>
 
                       <div className="input-group">
-                        <Briefcase className="input-icon" size={20} />
+                        <MessageCircle className="input-icon" size={20} />
                         <input 
                           type="text" 
-                          placeholder="What is your business about?" 
-                          value={business}
-                          onChange={(e) => setBusiness(e.target.value)}
+                          placeholder="How can we help you?" 
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
                           disabled={isSubmitting}
                         />
                       </div>
@@ -144,19 +140,19 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                       <button 
                         type="submit" 
                         className={`btn-primary modal-submit-btn ${isSubmitting ? 'loading' : ''}`}
-                        disabled={isSubmitting || phone.length < 10 || !name.trim() || !business.trim()}
+                        disabled={isSubmitting || phone.length < 10 || !name.trim() || !message.trim()}
                       >
                         {isSubmitting ? (
                           <div className="loader-spinner"></div>
                         ) : (
                           <>
-                            Get a Free Consultation <ArrowRight size={18} />
+                            Send Message <ArrowRight size={18} />
                           </>
                         )}
                       </button>
                     </form>
                     
-                    <p className="modal-footer-note">Your data stays private. We only use it to help grow your business.</p>
+                    <p className="modal-footer-note">Your data stays private. We only use it to help you.</p>
                   </>
                 ) : (
                   <div className="modal-success-state">
@@ -168,8 +164,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                     >
                       <CheckCircle2 size={48} color="#00D364" />
                     </motion.div>
-                    <h2>You're all set!</h2>
-                    <p>Our growth team has been notified. Expect a call within 24 hours to discuss your custom growth plan.</p>
+                    <h2>Message Sent!</h2>
+                    <p>Our support team has been notified. Expect a response within 24 hours.</p>
                   </div>
                 )}
               </div>

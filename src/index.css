@@ -6,38 +6,37 @@
 }
 
 :root {
-  /* Ultra-Premium Sarvam/Apple Color Palette */
-  --bg-color: #FFFFFF; /* Pure white */
+  /* Clean White Aesthetic with Yellow Accents */
+  --bg-color: #FAFAFA;
   --surface-color: #FFFFFF;
-  --text-primary: #1D1D1F; /* Apple dark gray */
-  --text-secondary: #86868B; /* Apple secondary gray */
+  --text-primary: #111111;
+  --text-secondary: #555555;
   
-  /* Gradients mimicking the user request (slightly greener, less purple) */
-  --gradient-bg: radial-gradient(circle at 15% 50%, rgba(175, 235, 215, 0.4) 0%, rgba(255,255,255,0) 45%),
-                 radial-gradient(circle at 85% 50%, rgba(200, 245, 185, 0.3) 0%, rgba(255,255,255,0) 45%);
+  /* Minimal Gradients */
+  --gradient-bg: radial-gradient(circle at 15% 50%, rgba(253, 224, 71, 0.15) 0%, rgba(250,250,250,0) 40%),
+                 radial-gradient(circle at 85% 30%, rgba(253, 224, 71, 0.1) 0%, rgba(250,250,250,0) 40%);
   
   /* Accent Colors */
-  --accent-purple: #B0A1FF;
-  --accent-blue: #96B4FF;
-  --accent-orange: #FFAB5E;
-  --accent-brand: #3A3A3C;
+  --accent-yellow: #EAB308;
+  --accent-yellow-light: #FEF08A;
+  --accent-green: #10B981;
   
   /* Glassmorphism / Cards */
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(0, 0, 0, 0.03);
-  --glass-blur: blur(20px);
-  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
-  --card-shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-blur: blur(24px);
+  --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.12);
 
   /* Container & Spacing */
-  --max-width: 1100px;
+  --max-width: 1200px;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 2rem;
   --space-xl: 4rem;
   
-  /* Typography - Using system fonts for that native Apple feel */
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  /* Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   
   /* Animation */
   --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -49,11 +48,11 @@ html, body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   line-height: 1.5;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 body {
@@ -66,8 +65,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-blue);
-  color: #fff;
+  background: var(--accent-yellow-light);
+  color: #000;
 }
 
 /* Base Link Styles */
@@ -94,65 +93,70 @@ button {
   z-index: 10;
 }
 
-/* Sarvam-like pill buttons */
-.pill-button {
-  padding: 8px 24px;
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #111 0%, #666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-yellow {
+  background: linear-gradient(135deg, #CA8A04 0%, #EAB308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium Buttons */
+.btn-primary {
+  background: #111;
+  color: #FFF;
+  padding: 16px 36px;
   border-radius: 100px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: var(--transition-fast);
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
-}
-
-.pill-light {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.8);
-  color: var(--text-primary);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.02);
-}
-
-.pill-light:hover {
-  background: rgba(255,255,255,1);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  transform: translateY(-1px);
-}
-
-/* Premium Dark CTA Button (Like Sarvam's 'Experience Sarvam') */
-.btn-primary {
-  background: #1C1C1E;
-  color: #F5F5F7;
-  padding: 12px 28px;
-  border-radius: 100px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  position: relative;
-  transition: var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
-  background: #000000;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .btn-secondary {
-  background: #F2F2F7;
-  color: var(--text-primary);
-  padding: 12px 28px;
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #111;
+  padding: 16px 36px;
   border-radius: 100px;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 1rem;
   transition: var(--transition-fast);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .btn-secondary:hover {
-  background: #E5E5EA;
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.pill-button {
+  padding: 8px 24px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* Custom Scrollbar */
@@ -160,7 +164,7 @@ button {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #FAFAFA;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
