@@ -1,0 +1,245 @@
+.ea-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(250, 250, 250, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9999;
+}
+
+.ea-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.ea-modal {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 28px;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.04),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.ea-gradient-blob {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ea-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.ea-close-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #111;
+  transform: scale(1.08);
+}
+
+.ea-content {
+  padding: 44px 36px 36px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.ea-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.ea-icon-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #FEF08A 0%, #EAB308 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #854D0E;
+  box-shadow: 0 8px 24px rgba(234, 179, 8, 0.3);
+}
+
+.ea-header h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.ea-header p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* Form */
+.ea-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ea-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ea-input-icon {
+  position: absolute;
+  left: 18px;
+  color: #999;
+  pointer-events: none;
+}
+
+.ea-input-group input {
+  width: 100%;
+  height: 56px;
+  padding: 0 20px 0 50px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-family: inherit;
+  color: #111;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.ea-input-group input:focus {
+  outline: none;
+  border-color: #EAB308;
+  box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.12);
+}
+
+.ea-input-group input::placeholder {
+  color: #BBB;
+}
+
+.ea-submit-btn {
+  height: 56px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  border-radius: 16px;
+  background: #111 !important;
+}
+
+.ea-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.ea-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: #FFF;
+  animation: ea-spin 0.7s linear infinite;
+}
+
+@keyframes ea-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ea-footer-note {
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Success State */
+.ea-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0 12px;
+}
+
+.ea-success-icon {
+  width: 88px;
+  height: 88px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.06) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #10B981;
+}
+
+.ea-success-state h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.ea-success-state p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .ea-content {
+    padding: 36px 24px 28px;
+  }
+  .ea-modal {
+    border-radius: 24px;
+  }
+}

@@ -46,8 +46,7 @@ const Navbar = ({ onOpenModal }: NavbarProps) => {
           </div>
           
           <div className="nav-actions">
-            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="btn-primary nav-cta">Download App</a>
-            <button className="btn-secondary nav-cta-secondary hide-mobile" onClick={onOpenModal}>Support</button>
+            <button className="btn-primary nav-cta" onClick={onOpenModal}>Get Early Access</button>
           </div>
         </div>
       </nav>

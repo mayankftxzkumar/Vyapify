@@ -1,9 +1,11 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import EarlyAccessCounter from './EarlyAccessCounter';
 import './Hero.css';
 
 interface HeroProps {
   onOpenModal: () => void;
+  earlyAccessCount: number;
 }
 
 const FloatingPhone = () => {
@@ -57,7 +59,7 @@ const FloatingPhone = () => {
   );
 };
 
-const Hero = ({ onOpenModal }: HeroProps) => {
+const Hero = ({ onOpenModal, earlyAccessCount }: HeroProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -122,13 +124,12 @@ const Hero = ({ onOpenModal }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="btn-primary hero-btn">
-              Download App
-            </a>
-            <button className="btn-secondary hero-btn-secondary" onClick={onOpenModal}>
-              Request Demo
+            <button className="btn-primary hero-btn" onClick={onOpenModal}>
+              Get Early Access
             </button>
           </motion.div>
+
+          <EarlyAccessCounter realCount={earlyAccessCount} />
         </motion.div>
 
         <motion.div 

@@ -6,25 +6,30 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import LocationMap from './components/LocationMap';
 import Footer from './components/Footer';
-import LeadModal from './components/LeadModal';
+import EarlyAccessModal from './components/EarlyAccessModal';
 import Legal from './components/Legal';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 
 function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [earlyAccessCount, setEarlyAccessCount] = useState(0);
 
   return (
     <>
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <main>
-        <Hero onOpenModal={() => setIsModalOpen(true)} />
+        <Hero onOpenModal={() => setIsModalOpen(true)} earlyAccessCount={earlyAccessCount} />
         <Services />
         <Testimonials />
         <LocationMap />
       </main>
       <Footer />
-      <LeadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <EarlyAccessModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={() => setEarlyAccessCount(prev => prev + 1)}
+      />
     </>
   );
 }
